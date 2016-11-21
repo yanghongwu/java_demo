@@ -5,12 +5,21 @@ package jvm;
  */
 public class DispatchTest {
 
+    private static final String aaaa = "en";
+
+    private final String bbbb = "en2";
+
+    private static String language = "en";
+
     static abstract class Human {
 
     }
 
     static class Woman extends Human{
-
+        public void printOuterClassPrivateFields() {
+            String fields = "language=" + language + ";";
+            System.out.println(fields);
+        }
     }
 
     static class Man extends Human{
@@ -36,6 +45,8 @@ public class DispatchTest {
         Human woman = new Woman();
         Human man = new Man();
         dt.sayHello(man);
-        dt.sayHello((Woman)woman);
+        dt.sayHello((Woman)woman    );
+
+        ((Woman) woman).printOuterClassPrivateFields();
     }
 }
