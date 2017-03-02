@@ -29,11 +29,8 @@ public class MainInterface {
 
         //
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
-        list.forEach(n -> System.out.print(n));
-
-
         list.forEach(System.out::println);
-
+        list.forEach(n -> System.out.println(n));
 
     }
 
