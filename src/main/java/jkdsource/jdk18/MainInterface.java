@@ -32,7 +32,7 @@ public class MainInterface {
         list.forEach(n -> System.out.print(n));
 
 
-
+        list.forEach(System.out::println);
 
 
     }
