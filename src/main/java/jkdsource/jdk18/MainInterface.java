@@ -2,6 +2,7 @@ package jkdsource.jdk18;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * Created by yanghongwu on 2017/3/1.
@@ -32,9 +33,17 @@ public class MainInterface {
         System.out.println(converter2.convert("aaaa"));
 
         //
+        final int num = 1;
+        FunctionInterface<String, Integer> converter3 = (from) -> Integer.valueOf(from + num);
+        System.out.println("--3-->" + converter3.convert("5"));
+
+        //
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
         list.forEach(System.out::println);
         list.forEach(n -> System.out.println(n));
+
+        //
+//        Formula formla = (n) -> sqrt(10);
 
     }
 
