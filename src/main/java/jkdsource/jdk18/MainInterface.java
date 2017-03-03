@@ -26,6 +26,10 @@ public class MainInterface {
 
         System.out.println(converter.get("你好"));
 
+        //
+        SomeThing st = new SomeThing();
+        FunctionInterface<String, String> converter2 = st::startWith;
+        System.out.println(converter2.convert("aaaa"));
 
         //
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
