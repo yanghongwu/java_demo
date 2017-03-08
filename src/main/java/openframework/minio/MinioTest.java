@@ -25,6 +25,7 @@ public class MinioTest {
 //        } catch (Exception e) {
 //            System.out.println("Error occurred: " + e);
 //        }
+
     }
 
 }
