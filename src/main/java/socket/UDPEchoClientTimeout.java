@@ -49,7 +49,7 @@ public class UDPEchoClientTimeout {
             } while ((!receiveResponse) && (tries < MAXTRIES));
 
             if (receiveResponse) {
-                System.out.println("Received: " + new String(receivePacket.getData()));
+                System.out.println("Received: " + new String(receivePacket.getData(),"gbk"));
             } else {
                 System.out.println("No response -- giving up.");
             }
