@@ -22,7 +22,7 @@ public class TCPEchoServer {
         try {
             ServerSocket servSocket = new ServerSocket(servPort);
             int recvMsgSize;
-            byte[] receiveBuf = new byte[32];
+            byte[] receiveBuf = new byte[4];
 
             while (true) {
                 Socket clntSocket = servSocket.accept();
@@ -33,11 +33,14 @@ public class TCPEchoServer {
                 InputStream in = clntSocket.getInputStream();
                 OutputStream out = clntSocket.getOutputStream();
 
-                out.write("来自服务器端".getBytes());
 
+                System.out.println("可读字节数:" + in.available());  // TCP协议特点:非实时传输  分组 ,所有该方法返回未必是真实的;
+                out.write("来自服务器端".getBytes());
                 while ((recvMsgSize = in.read(receiveBuf)) != -1) {
+                    System.out.println("22--可读字节数:" + in.available());
+
                     String tmp = new String(receiveBuf);
-                    System.out.println("Received Data : " + new String(receiveBuf));
+                    System.out.println("Received Data : " + new String(receiveBuf, 0, recvMsgSize));
                     out.write(receiveBuf, 0, recvMsgSize);
                     if (tmp != null && tmp.contains("EOF")) {
                         break;
