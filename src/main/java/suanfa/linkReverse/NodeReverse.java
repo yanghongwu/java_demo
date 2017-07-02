@@ -2,6 +2,8 @@ package suanfa.linkReverse;
 
 /**
  * Created by yanghongwu on 2017/2/23.
+ *
+ * http://www.cnblogs.com/tina-smile/p/4878983.html
  */
 public class NodeReverse {
 
@@ -16,17 +18,22 @@ public class NodeReverse {
         node2.setNext(node3);
 
 
-        print(head);
+//        print(head);
 
 //        head = reverse(head);
-        print(head);
+//        print(head);
 
         System.out.println();
 
         Node nNode = new Node(-1);
-        recursion(head, nNode);
-
+//        recursion(head, nNode);
         print(nNode.getNext());
+
+//        Node newNode = noDigui(head);
+        Node newNode = digui(head);
+        print(newNode);
+
+
     }
 
     private static void print(Node head) {
@@ -73,6 +80,32 @@ public class NodeReverse {
 
         return head;
 
+    }
+
+    public static Node digui(Node node) {
+        if (node.getNext() == null) {
+            return node;
+        }
+
+        Node nextNode = digui(node.getNext());
+        System.out.println("-----" + nextNode.getValue());
+        node.getNext().setNext(node);
+        node.setNext(null);
+
+        return nextNode;
+
+    }
+
+
+    public static Node noDigui(Node head) {
+        Node prev = null;
+        while (head != null) {
+            Node tmp = head.getNext();
+            head.setNext(prev);
+            prev = head;
+            head = tmp;
+        }
+        return prev;
     }
 
 }
