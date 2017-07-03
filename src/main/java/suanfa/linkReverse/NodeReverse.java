@@ -88,7 +88,6 @@ public class NodeReverse {
         }
 
         Node nextNode = digui(node.getNext());
-        System.out.println("-----" + nextNode.getValue());
         node.getNext().setNext(node);
         node.setNext(null);
 

@@ -42,7 +42,14 @@ public class Test {
             ZooKeeper zooKeeper = new ZooKeeper("127.0.0.1:2161", 9999999, watcher);
             System.out.println("获得连接: " + zooKeeper);
 
-            zooKeeper.create("/zk1", "hello zookeeper".getBytes(), acls, CreateMode.PERSISTENT);
+
+            zooKeeper.addAuthInfo("digest", "admin:admin".getBytes());
+            zooKeeper.create("/zkseq", "hello zk1_seq".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT_SEQUENTIAL);
+            zooKeeper.create("/zkephemeral", "hello zk1_seq".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
+
+//            zooKeeper.setData("/zk1", "第三次次修改zk1节点".getBytes(),-1);
+
+            Thread.sleep(1000 * 30);
 
             final byte[] data= zooKeeper.getData("/zk1", watcher, null);
             System.out.println("读取的值：" + new String(data));
