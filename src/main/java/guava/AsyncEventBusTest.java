@@ -47,6 +47,8 @@ public class AsyncEventBusTest {
 
     public static void asyncEventBus() {
         final AsyncEventBus aeventBus = new AsyncEventBus(Executors.newSingleThreadExecutor());
+
+
         aeventBus.register(new Object() {
             @Subscribe
             public void lister(Integer integer) {
